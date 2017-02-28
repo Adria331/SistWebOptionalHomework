@@ -8,10 +8,6 @@ Free book name searcher
 
 import urllib2
 from bs4 import BeautifulSoup
-import smtplib
-from email.mime.text import MIMEText
-
-#TODO sendEmail
   
 class Client(object):
 
@@ -36,7 +32,8 @@ class Client(object):
                 return element
 
     def main(self):
-        htmlWeb = self.get_web('https://www.packtpub.com/packt/offers/free-learning/')
+        htmlWeb = self.get_web(
+          'https://www.packtpub.com/packt/offers/free-learning/')
         freeBook = self.search_book_name(htmlWeb)
         print freeBook
 
