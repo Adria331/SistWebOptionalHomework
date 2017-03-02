@@ -3,18 +3,13 @@
 # vim: set fileencoding=utf8 :
 '''
 @author Adrià Bonet Vidal
-Free book name searcher
+Daily free book of Packt notifier
 '''
 
 import urllib2
 from bs4 import BeautifulSoup
 import subprocess
-def start(bot, update):
-    update.message.reply_text('Hello World!')
 
-def hello(bot, update):
-    update.message.reply_text(
-        'Hello {}'.format(update.message.from_user.first_name))
 
 class Client(object):
 
@@ -40,6 +35,7 @@ class Client(object):
         htmlWeb = self.get_web(
           'https://www.packtpub.com/packt/offers/free-learning/')
         freeBook = self.search_book_name(htmlWeb)
+
         print freeBook
         self.sendMessage(str(freeBook))
 
