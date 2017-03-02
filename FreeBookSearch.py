@@ -21,15 +21,8 @@ class Client(object):
     def search_book_name(self, html):
         soup = BeautifulSoup(html, 'html.parser')
         elements = soup.find_all("div", "dotd-title")
-
-        tmp = []
-        resultat = []
-        for element in elements:
-            tmp.append(str(element))
-        for element in str(tmp).split('\\t'):
-            resultat.append(element)
-            if self.identifyElement(element) and element != "":
-                return element
+        bookName = elements[0].find_all("h2")[0].text.strip()
+        return bookName
 
     def main(self):
         htmlWeb = self.get_web(
@@ -44,4 +37,4 @@ class Client(object):
 
 if __name__ == "__main__":
     clientWeb = Client()
-    clientWeb.main()
+clientWeb.main()
