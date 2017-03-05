@@ -10,7 +10,6 @@ import urllib2
 from bs4 import BeautifulSoup
 import subprocess
 
-
 class Client(object):
 
     def get_web(self, link):
@@ -19,7 +18,7 @@ class Client(object):
         file.close()
         return html
 
-    # Search the daily free book name of Packt website
+    # Search the daily free book name of Packt free learning Website
     def search_book_name(self, html):
         soup = BeautifulSoup(html, 'html.parser')
         elements = soup.find_all("div", "dotd-title")
@@ -27,7 +26,7 @@ class Client(object):
         return bookName
 
     # Shows a system message with the name of the book 
-    #(You can use cron to show it always)
+    #(You can use cron to show it when you want)
     def sendMessage(self, book):
     	subprocess.Popen(['notify-send', "The free book of the day is: " + book])
 
